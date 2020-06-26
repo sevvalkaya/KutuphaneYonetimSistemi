@@ -1,0 +1,38 @@
+﻿
+@model MvcKutuphane.Models.Entity.TBLDUYURULAR
+@{
+    ViewBag.Title = "YeniDuyuru";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>YeniDuyuru</h2>
+
+<form class="form-group" method="post">
+
+    <div>
+        <a href="/Duyuru/Index" class="btn btn-danger">Geri</a>
+    </div>
+    <div style=" margin-top:15px">
+        <label>Duyuru Kategorisi </label>
+        @Html.TextBoxFor(x => x.KATEGORI, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.KATEGORI, "", new { @style = "color:red" })*@
+    </div>
+    <div style=" margin-top:15px">
+        <label>Duyuru İçeriği </label>
+        @Html.TextBoxFor(x => x.ICERIK, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.ICERIK, "", new { @style = "color:red" })*@
+    </div>
+    <div style=" margin-top:15px">
+        <label>Duyuru Tarihi </label>
+        @Html.TextBoxFor(x => x.TARIH, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.TARIH, "", new { @style = "color:red" })*@
+    </div>
+
+    <div style="margin-top:15px">
+        @*@ViewBag.mesaj*@
+        <div style="margin-top:15px"></div>
+        <button class="btn btn-info" id="Btn2">Duyuru Ekle</button>
+        @*@Html.ValidationMessageFor(k => k.PERSONAL)*@
+
+    </div>
+</form>

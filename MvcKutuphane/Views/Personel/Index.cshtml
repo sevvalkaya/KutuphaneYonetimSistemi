@@ -1,0 +1,43 @@
+﻿@using MvcKutuphane.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLPERSONEL>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<title>Kütüphane Yönetim Sistemi</title>
+<h2>PERSONEL SAYFASI</h2>
+<div style="margin-bottom:15px;">
+    <a href="/Personel/PersonelEkle/" class="btn btn-primary">Personel Ekle</a>
+</div>
+<table class="table table-striped">
+    <tr style="background-color:#818181">
+        <th style="color:white">PERSONEL ADI</th>
+        <th style="color:white">PERSONEL MAİL</th>
+        <th style="color:white">PERSONEL ŞİFRE</th>
+        <th style="color:white">Sil</th>
+        <th style="color:white">Güncelle</th>
+    </tr>
+    @foreach (var prs in Model)
+    {
+        <tr>
+            @*<td>@ktg.ID</td>*@
+            <td>@prs.PERSONAL</td>
+            @*<td><a href="/Kategori/KategoriSil/@ktg.ID" class="btn btn-danger">Sil</a></td>*@
+            <td>@prs.MAIL</td>
+            <td>@prs.SIFRE</td>
+            <td>
+                @Html.ActionLink(
+                     "Sil", "PersonelSil",
+                     new { id = prs.ID },
+                     new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?')", @prs.PERSONAL }
+                     )
+            </td>
+            <td><a href="/Personel/PersonelGetir/@prs.ID" class="btn btn-success">Güncelle</a></td>
+
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))

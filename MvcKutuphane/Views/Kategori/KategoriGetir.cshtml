@@ -1,0 +1,30 @@
+﻿@model MvcKutuphane.Models.Entity.TBLKATEGORI
+@{
+    ViewBag.Title = "KategoriGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<title>Kütüphane Yönetim Sistemi</title>
+@using (Html.BeginForm("KategoriGuncelle", "Kategori", FormMethod.Post))//Guncelle actionresultını kaplıyor.
+                                                                       // Kategori controller ve bu method post olduğunda çalışcak.
+{
+    <div class="form-group">
+        <div>
+            <a href="/Kategori/Index" class="btn btn-danger">Geri</a>
+        </div>
+        <div style="margin-bottom:15px"></div>
+        @Html.HiddenFor(x => x.ID)
+        @*Html.LabelFor(k => k.AD)*@
+        <label>KATEGORİ ADI</label>
+        @Html.TextBoxFor(k => k.AD, new { @class = "form-control" })
+
+
+    </div>
+    <div>
+        @*Html.ValidationMessageFor(k => k.AD)*@
+        @ViewBag.mesaj
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+
+

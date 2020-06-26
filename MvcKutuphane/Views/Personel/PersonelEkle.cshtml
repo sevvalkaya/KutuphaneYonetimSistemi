@@ -1,0 +1,37 @@
+﻿@model MvcKutuphane.Models.Entity.TBLPERSONEL
+@{
+    ViewBag.Title = "PersonelEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+    <title>Kütüphane Yönetim Sistemi</title>
+<h2>PersonelEkle</h2>
+
+<form class="form-group" method="post">
+
+    <div>
+        <a href="/Personel/Index" class="btn btn-danger">Geri</a>
+    </div>
+    <div style=" margin-top:15px">
+        <label>Personel Adı</label>
+        @Html.TextBoxFor(k => k.PERSONAL, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PERSONAL, "", new { @style = "color:red" })
+    </div>
+    <div style=" margin-top:15px">
+        <label>Personel Mail</label>
+        @Html.TextBoxFor(k => k.MAIL, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PERSONAL, "", new { @style = "color:red" })
+    </div>
+    <div style=" margin-top:15px">
+        <label>Personel Şifre</label>
+        @Html.TextBoxFor(k => k.SIFRE, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.PERSONAL, "", new { @style = "color:red" })
+    </div>
+
+    <div style="margin-top:15px">
+        @*@ViewBag.mesaj*@
+        <div style="margin-top:15px"></div>
+        <button class="btn btn-info" id="Btn2">Personel Ekle</button>
+        @*@Html.ValidationMessageFor(k => k.PERSONAL)*@
+
+    </div>
+</form>

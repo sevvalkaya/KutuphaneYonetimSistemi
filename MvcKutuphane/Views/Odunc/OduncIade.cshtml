@@ -1,0 +1,48 @@
+﻿@model MvcKutuphane.Models.Entity.TBLHAREKET
+@{
+    ViewBag.Title = "OduncIade";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>OduncIade</h2>
+<title>Kütüphane Yönetim Sistemi</title>
+
+@using (Html.BeginForm("OduncGuncelle", "Odunc", FormMethod.Post))//Guncelle actionresultını kaplıyor.
+                                                                 // odunc controller ve bu method post olduğunda çalışcak.
+{
+<div class="form-group">
+    
+    <div style="margin-bottom:15px"></div>
+    @Html.HiddenFor(x => x.ID)
+    @*Html.LabelFor(k => k.AD)*@
+    <label>KİTAP ADI</label>
+    @Html.TextBoxFor(k => k.TBLKITAP.AD, new { @class = "form-control" })
+    <br />
+    <label>ÜYE</label>
+    @Html.TextBoxFor(k => k.TBLUYELER.AD, new { @class = "form-control" })
+    <br />
+    <label>PERSONEL</label>
+    @Html.TextBoxFor(k => k.PERSONEL, new { @class = "form-control" })
+    <br />
+    <label>ALIŞ TARİHİ</label>
+    @Html.TextBoxFor(k => k.ALISTARIH, "{0:dd.MM.yyyy}", new { @class = "form-control" })
+    <br />
+    <label>NORMAL İADE TARİHİ</label>
+    @Html.TextBoxFor(k => k.IADETARIH, "{0:dd.MM.yyyy}", new { @class = "form-control" })
+    <br />
+    <label>ÜYENİN GETİRDİĞİ TARİH</label>
+    <input type="text" class="form-control" name="UYEGETIRTARIH" value="@DateTime.Now.ToShortDateString()" />
+    <br />
+    <label>GEÇ KALINAN GÜN SAYISI </label>
+    <br />
+    <input type="text" class="form-control" name="Gecinput" value="@ViewBag.dgr" />
+    <br />
+
+
+</div>
+    <div>
+        @*Html.ValidationMessageFor(k => k.AD)
+            @ViewBag.mesaj*@
+        <button class="btn btn-group" style="background-color:#ff6a00; color:white;">Ödünç Kitabı Geri Al</button>
+    </div>
+}

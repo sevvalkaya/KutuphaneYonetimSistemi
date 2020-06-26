@@ -1,0 +1,35 @@
+﻿@model MvcKutuphane.Models.Entity.TBLYAZAR
+@{
+    ViewBag.Title = "YazarEkle";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+    <title>Kütüphane Yönetim Sistemi</title>
+<h2>Yazar Ekle</h2>
+<form class="form-group" method="post">
+    @*post olduğunda buradaki işlemleri gerçekleştirecek*@
+    <div>
+        <a href="/Yazar/Index" class="btn btn-danger">Geri</a>
+    </div>
+    <div style=" margin-top:15px">
+        <label>Yazar Adı</label>
+        @Html.TextBoxFor(y => y.AD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(y => y.AD, "", new { @style = "color:red" })
+
+    </div>
+    <div style=" margin-top:15px">
+        <label>Yazar Soyadı</label>
+        @Html.TextBoxFor(y => y.SOYAD, new { @class = "form-control" })
+        @Html.ValidationMessageFor(y => y.SOYAD, "", new { @style = "color:red" })
+
+    </div>
+    <div style=" margin-top:15px">
+        <label>Yazar Detay Bilgileri</label>
+        @Html.TextAreaFor(y => y.DETAY, new { @class = "form-control" })
+
+    </div>
+    <div style="margin-top:15px">
+
+        <button class="btn btn-info" id="Btn2">Yazar Ekle</button>
+    </div>
+</form>
+

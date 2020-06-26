@@ -1,0 +1,72 @@
+﻿@model MvcKutuphane.Models.Entity.TBLUYELER
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPanel.cshtml";
+}
+<div style="margin-top:15px;">
+
+</div>
+<h2>Kütüphane Üye Profil Bilgileri</h2>
+
+@*  @HttpContext.Current.User.Identity.Name//maili panelim ındex sayfasına taşıma*@
+
+@using (Html.BeginForm("Index", "Panelim", FormMethod.Post))
+{
+    <table class="table table-hover" style="margin-top:30px;">
+        <tr>
+            <th>Mail Adresi:</th>
+            <td> @HttpContext.Current.User.Identity.Name </td>
+
+        </tr>
+        @*<tr>
+            <th>Öğrenci ID:</th>
+            <td>
+                @Html.TextBoxFor(x => x.ID, new { @class = "form-control" })
+            </td>
+
+        </tr>*@
+        <tr>
+            <th>Ad:</th>
+            <td>
+                @Html.TextBoxFor(x => x.AD, new { @class = "form-control" })
+            </td>
+
+        </tr>
+        <tr>
+            <th>Soyad:</th>
+            <td>
+                @Html.TextBoxFor(x => x.SOYAD, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th> Kullanıcı Adı:</th>
+            <td>
+                @Html.TextBoxFor(x => x.KULLANICIADI, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th> Şifre:</th>
+            <td>
+                @Html.TextBoxFor(x => x.SIFRE, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th> Fotoğraf:</th>
+            <td>
+                @Html.TextBoxFor(x => x.FOTOGRAF, new { @class = "form-control" })
+            </td>
+        </tr>
+        <tr>
+            <th> Okul:</th>
+            <td>
+                @Html.TextBoxFor(x => x.OKUL, new { @class = "form-control" })
+            </td>
+        </tr>
+
+        <tr>
+            <th><button class="btn btn-warning">Bilgilerimi Güncelle</button> </th>
+
+        </tr>
+    </table>
+
+}

@@ -1,0 +1,40 @@
+﻿@model MvcKutuphane.Models.Entity.TBLDUYURULAR
+@{
+    ViewBag.Title = "DuyuruDetay";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<head>
+    <title>Kütüphane Yönetim Sistemi</title>
+    <link rel="SHORTCUT ICON" href="~/book.ico">
+</head>
+
+    
+
+<h2>Duyuru Detay</h2>
+
+@using (Html.BeginForm("DuyuruGuncelle", "Duyuru", FormMethod.Post))//Guncelle actionresultını kaplıyor.
+                                                                       // Duyuru controller ve bu method post olduğunda çalışcak.
+{
+<div class="form-group">
+    <div>
+        <a href="/Duyuru/Index" class="btn btn-danger">Geri</a>
+    </div>
+    <div style="margin-bottom:15px"></div>
+    @Html.LabelFor(k => k.ID)
+    @Html.TextBoxFor(k => k.ID, new { @class = "form-control" })
+    <br />
+    <label>Duyuru Kategorisi</label>
+    @Html.TextBoxFor(k => k.KATEGORI, new { @class = "form-control" })
+    <br />
+    <label>Duyuru İçerik</label>
+    @Html.TextAreaFor(k => k.ICERIK, new { @class = "form-control" })
+    <br />
+    <label>Duyuru Tarih</label>
+    @Html.TextBoxFor(k => k.TARIH, new { @class = "form-control" })
+    <br />
+</div>
+    <div>
+       
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

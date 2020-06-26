@@ -1,0 +1,53 @@
+﻿@using MvcKutuphane.Models.Entity
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLUYELER>
+@*IPAGEDLİST interface var bunun içerisne tbalonun ismini ekledim.*@
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<title>Kütüphane Yönetim Sistemi</title>
+<h2>Üyeler Sayfası</h2>
+<div style="margin-bottom:15px;">
+    <a href="/Uye/UyeEkle/" class="btn btn-primary">Üye Ekle</a>
+</div>
+<table class="table table-striped">
+    <tr style="background-color:#818181">
+        <th style="color:white">ÜYE ID</th>
+        <th style="color:white">ÜYE ADI</th>
+        <th style="color:white">ÜYE SOYADI</th>
+        <th style="color:white">MAİL</th>
+        <th style="color:white">OKUL</th>
+        <th  style="color:white">SİL</th>
+        <th style="color:white">GÜNCELLE</th>
+        <th style="color:white">KİTAP GEÇMİŞİ</th>
+
+    </tr style="background-color:#818181">
+    @foreach (var uye in Model)
+    {
+        <tr>
+            <td>@uye.ID</td>
+            <td>@uye.AD</td>
+            <td>@uye.SOYAD</td>
+            <td>@uye.MAIL</td>
+            <td>@uye.OKUL</td>
+
+            @*<td><a href="/Uye/UyeSil/@uye.ID" class="btn btn-danger">Sil</a></td>*@
+            <td>
+                @Html.ActionLink(
+                     "Sil", "UyeSil",
+                     new { id = uye.ID },
+                     new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?')" }
+                     )
+            </td>
+            <td><a href="/Uye/UyeGetir/@uye.ID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Uye/UyeKitapGecmis/@uye.ID" style="background-color:seagreen; color:white;" class="btn btn-default">Kitap Geçmişi</a></td>
+
+        </tr>
+    }
+</table>
+@Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+@*pagedlistpager sayfalama değerlerini oluşturdu. modellimden gelen değerleri listeliyor IPAGEDLİST.
+    Url action sayfa değişkenini götürüyor.*@

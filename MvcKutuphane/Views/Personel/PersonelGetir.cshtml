@@ -1,0 +1,30 @@
+﻿@model MvcKutuphane.Models.Entity.TBLPERSONEL
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+    <title>Kütüphane Yönetim Sistemi</title>
+<h2>PersonelGetir</h2>
+
+
+@using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))//Guncelle actionresultını kaplıyor.
+                                                                       // personel controller ve bu method post olduğunda çalışcak.
+{
+    <div class="form-group">
+        <div>
+            <a href="/Personel/Index" class="btn btn-danger">Geri</a>
+        </div>
+        <div style="margin-bottom:15px"></div>
+        @Html.HiddenFor(x => x.ID)
+        @*Html.LabelFor(k => k.AD)*@
+        <label>PERSONEL ADI</label>
+        @Html.TextBoxFor(k => k.PERSONAL, new { @class = "form-control" })@* ID ye göre form kontrolü*@
+
+
+    </div>
+    <div>
+        @*Html.ValidationMessageFor(k => k.AD)
+            @ViewBag.mesaj*@
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

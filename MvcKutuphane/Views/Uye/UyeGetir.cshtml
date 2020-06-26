@@ -1,0 +1,43 @@
+﻿@model MvcKutuphane.Models.Entity.TBLUYELER
+@{
+    ViewBag.Title = "UyeGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+    <title>Kütüphane Yönetim Sistemi</title>
+<h2>UyeGetir</h2>
+
+@using (Html.BeginForm("UyeGuncelle", "Uye", FormMethod.Post))//Guncelle actionresultını kaplıyor.
+                                                             // personel controller ve bu method post olduğunda çalışcak.
+{
+    <div class="form-group">
+        <div>
+            <a href="/Uye/Index" class="btn btn-danger">Geri</a>
+        </div>
+        <div style="margin-bottom:15px"></div>
+        @Html.HiddenFor(x => x.ID)
+        @*Html.LabelFor(k => k.AD)*@
+        <label>Uye Adı</label>
+        @Html.TextBoxFor(k => k.AD, new { @class = "form-control" })@* ID ye göre form kontrolü*@
+        <label>Uye Soyadı</label>
+        @Html.TextBoxFor(k => k.SOYAD, new { @class = "form-control" })
+        <label>Mail Adresi</label>
+        @Html.TextBoxFor(k => k.MAIL, new { @class = "form-control" })
+        <label>Kullanıcı Adı</label>
+        @Html.TextBoxFor(k => k.KULLANICIADI, new { @class = "form-control" })
+        <label>Şifre</label>
+        @Html.TextBoxFor(k => k.SIFRE, new { @class = "form-control" })
+        <label>Ftograf Linki</label>
+        @Html.TextBoxFor(k => k.FOTOGRAF, new { @class = "form-control" })
+        <label>Telefon Numarası</label>
+        @Html.TextBoxFor(k => k.TELEFON, new { @class = "form-control" })
+        <label>Uye Okulu</label>
+        @Html.TextBoxFor(k => k.OKUL, new { @class = "form-control" })
+
+
+    </div>
+    <div>
+        @*Html.ValidationMessageFor(k => k.AD)
+            @ViewBag.mesaj*@
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}

@@ -1,0 +1,17 @@
+﻿@model MvcKutuphane.Models.Entity.TBLYAZAR
+@{
+    ViewBag.Title = "YazarGetir";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+    <title>Kütüphane Yönetim Sistemi</title>
+<h2>YazarGetir</h2>
+
+@using (Html.BeginForm("YazarGuncelle", "Yazar", FormMethod.Post))
+{
+    <div class="form-group">
+        <label>Yazar Id</label>
+        @Html.TextBoxFor(y => y.ID, new { @class = "form-control" })
+
+
+    </div>
+}

@@ -1,0 +1,60 @@
+﻿@using MvcKutuphane.Models.Entity
+
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<TBLKITAP>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+    <title>Kütüphane Yönetim Sistemi</title>
+<h2>Kitap Sayfası</h2>
+<a href="/Kitap/KitapEkle" class="btn btn-primary">Yeni Kitap Ekle</a>
+@using (Html.BeginForm("Index", "Kitap", FormMethod.Get))
+{
+    <div style="margin-bottom:15px;margin-top:15px;">
+        <b>Aranacak Kitap Adını Giriniz..&nbsp</b>@Html.TextBox("p")
+        <input type="submit" value="Ara" class="btn btn-success" />
+
+    </div>
+}
+
+
+<table class="table table-striped">
+    <tr style="background-color:#818181">
+        <th style="color:white">Kitap ID</th>
+        <th style="color:white">Kitap Adı</th>
+        <th style="color:white">Kitap Yazarı</th>
+        <th style="color:white">Kategorisi</th>
+        <th style="color:white">Basım Yılı</th>
+        <th style="color:white">Yayın Evi</th>
+        <th style="color:white">Sayfa</th>
+        <th style="color:white">Durum</th>
+        <th style="color:white">Sil</th>
+        <th style="color:white">Güncelle</th>
+        @foreach (var k in Model)
+        {
+        <tr>
+            <td>@k.ID</td>
+            <td>@k.AD</td>
+            <td>@k.TBLYAZAR.AD @k.TBLYAZAR.SOYAD</td>
+            <td>@k.TBLKATEGORI.AD</td>
+            <td>@k.BASIMYIL</td>
+            <td>@k.YAYINEVI</td>
+            <td>@k.SAYFA</td>
+            <td>@k.DURUM</td>
+            <td>
+                @Html.ActionLink(
+                "Sil", "KitapSil",
+                new { id = k.ID },
+                new { @class = "btn btn-danger", onclick = "return confirm('Silmek istiyor musunuz?')" })
+
+            </td>
+            <td><a href="/Kitap/KitapGetir/@k.ID" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
+        </tr>
+
+    </table>
+    @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("Index", new { sayfa }))
+
